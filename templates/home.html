@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DPS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    #form_center{
+      background-color: #f2f2f2;
+      padding: 20px;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+      margin-top: 20px;
+      color: #000;
+      color: #000;
+    }
+    body{
+      background-color: white;
+    }
+    .text-center{
+      color: #4CAF50;
+      font-weight: bolder;
+      font-size: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div id="form_center" class="col-md-4 col-md-offset-4">
+    <p class="text-center">DISEASE PREDICTION SYSTEM</p>
+    <h5>Enter the symptoms to find out the  <b>MOST PROBABLE DISEASE </b> you might be suffering from..</h5>
+    <form action="/run/" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="s1">Symptom 1:</label>
+        <select class="form-control input-sm" name="s1name" id="sym1">
+          {% for key, value in data.items %}
+            <option value="{{key}}">{{value}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="s2">Symptom 2:</label>
+        <select class="form-control input-sm" name="s2name" id="sym2">
+          {% for key, value in data.items %}
+            <option value="{{key}}">{{value}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="s3">Symptom 3:</label>
+        <select class="form-control input-sm" name="s3name" id="sym3">
+          {% for key, value in data.items %}
+            <option value="{{key}}">{{value}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="s4">Symptom 4:</label>
+        <select class="form-control input-sm" name="s4name" id="sym4">
+          {% for key, value in data.items %}
+            <option value="{{key}}">{{value}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="s5">Symptom 5:</label>
+        <select class="form-control input-sm" name="s5name" id="sym5">
+          {% for key, value in data.items %}
+            <option value="{{key}}">{{value}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success btn-block">Predict</button>
+      <div class="form-group">
+        <label for="preddis">Predicted Disease:</label>
+        <input type="text" class="form-control" value="{{output}}" id="usr">
+      </div>
+    </form>  
+  </div>
+
+</div>
+
+</body>
+</html>
